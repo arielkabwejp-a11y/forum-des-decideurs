@@ -6,142 +6,184 @@
   <title>Forum des Décideurs</title>
   <style>
     :root {
-      --noir: #05070f;
-      --noir-bleu: #0b1226;
-      --carte: #111b35;
+      --bleu-nuit: #0a2a66;
       --bleu: #1e6bff;
-      --bleu-clair: #5b9bff;
+      --bleu-clair: #e8f0ff;
       --blanc: #ffffff;
-      --texte: #e6ecff;
-      --gris: #9aa7c7;
+      --gris-fond: #f5f8ff;
+      --texte: #1d2433;
+      --gris: #5a6378;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; color: var(--texte); background: var(--noir); line-height: 1.6; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--texte); background: var(--blanc); line-height: 1.6; }
     img { max-width: 100%; display: block; }
+    a { color: inherit; }
 
-    header { background: var(--noir); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; border-bottom: 2px solid var(--bleu); z-index: 10; }
-    header .logo-box { background: var(--blanc); border-radius: 8px; padding: 4px 10px; }
-    header img { height: 50px; }
-    nav a { color: var(--texte); text-decoration: none; margin-left: 18px; font-weight: bold; font-size: 15px; }
-    nav a:hover { color: var(--bleu-clair); }
+    /* Barre supérieure */
+    .topbar { background: var(--bleu-nuit); color: var(--blanc); font-size: 14px; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
-    .hero { background: linear-gradient(rgba(5,7,15,0.8), rgba(11,18,38,0.92)), url('photo-7.jpg') center/cover; text-align: center; padding: 120px 20px; position: relative; border-bottom: 4px solid var(--bleu); }
-    .hero .tag { display: inline-block; background: var(--bleu); color: var(--blanc); padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-    .hero h1 { font-size: 50px; color: var(--blanc); margin-bottom: 18px; line-height: 1.15; }
-    .hero h1 span { color: var(--bleu-clair); }
-    .hero p { font-size: 19px; max-width: 700px; margin: 0 auto 35px; color: var(--texte); }
-    .bouton { display: inline-block; background: var(--bleu); color: var(--blanc); padding: 15px 34px; border-radius: 30px; text-decoration: none; font-weight: bold; }
-    .bouton:hover { background: var(--bleu-clair); }
+    /* En-tête */
+    header { background: var(--blanc); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(10,42,102,0.12); z-index: 10; }
+    header img { height: 55px; }
+    nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    nav a { color: var(--texte); text-decoration: none; font-weight: bold; font-size: 15px; padding: 4px 0; }
+    nav a:hover { color: var(--bleu); }
+    .btn-haut { background: var(--bleu); color: var(--blanc); padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 15px; }
 
+    /* Bannière */
+    .hero { background: linear-gradient(90deg, rgba(10,42,102,0.92) 40%, rgba(10,42,102,0.55)), url('photo-7.jpg') center/cover; color: var(--blanc); padding: 110px 20px; }
+    .hero-contenu { max-width: 1100px; margin: auto; }
+    .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; font-size: 14px; margin-bottom: 18px; }
+    .hero h1 { font-size: 50px; line-height: 1.15; margin-bottom: 18px; max-width: 700px; }
+    .hero h1 span { color: #9cc4ff; }
+    .hero p { font-size: 19px; max-width: 620px; margin-bottom: 32px; }
+    .boutons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .bouton { display: inline-block; padding: 14px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    .bouton-plein { background: var(--bleu); color: var(--blanc); }
+    .bouton-plein:hover { background: #1557d6; }
+    .bouton-clair { background: var(--blanc); color: var(--bleu-nuit); }
+    .bouton-clair:hover { background: var(--bleu-clair); }
+
+    /* Sections générales */
     section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-    .titre { font-size: 40px; color: var(--blanc); text-align: center; margin-bottom: 12px; text-transform: uppercase; }
-    .titre span { color: var(--bleu-clair); }
-    .sous-titre { text-align: center; color: var(--gris); margin: 0 auto 45px; max-width: 700px; }
+    .titre { font-size: 38px; color: var(--bleu-nuit); text-align: center; margin-bottom: 12px; }
+    .titre::after { content: ""; display: block; width: 60px; height: 4px; background: var(--bleu); margin: 14px auto 0; border-radius: 2px; }
+    .sous-titre { text-align: center; color: var(--gris); max-width: 680px; margin: 0 auto 45px; }
 
+    /* Actions */
     .grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
-    .carte { background: var(--carte); border-left: 4px solid var(--bleu); border-radius: 10px; padding: 26px; }
-    .carte .num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bleu); color: var(--blanc); font-weight: bold; margin-bottom: 16px; }
-    .carte h3 { color: var(--blanc); margin-bottom: 8px; font-size: 19px; }
+    .carte { background: var(--blanc); border: 1px solid #dde6f7; border-radius: 10px; padding: 26px; box-shadow: 0 4px 16px rgba(10,42,102,0.06); border-top: 4px solid var(--bleu); }
+    .carte .num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bleu-clair); color: var(--bleu); font-weight: bold; margin-bottom: 16px; }
+    .carte h3 { color: var(--bleu-nuit); font-size: 19px; margin-bottom: 8px; }
     .carte p { color: var(--gris); }
 
+    /* Mission */
+    .fond-clair { background: var(--gris-fond); max-width: 100%; }
+    .fond-clair .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .fond-clair h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 18px; }
+    .fond-clair h2 span { color: var(--bleu); }
+    .fond-clair p { margin-bottom: 15px; color: var(--texte); }
+    .fond-clair img { border-radius: 12px; height: 400px; width: 100%; object-fit: cover; }
+    .valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+    .valeurs div { background: var(--blanc); border-left: 4px solid var(--bleu); padding: 14px 16px; border-radius: 6px; }
+    .valeurs strong { color: var(--bleu-nuit); display: block; margin-bottom: 4px; }
+
+    /* Bandeau bleu */
+    .bandeau { background: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 60px 20px; }
+    .bandeau h2 { font-size: 32px; margin-bottom: 14px; }
+    .bandeau p { max-width: 700px; margin: 0 auto 26px; color: #d6e4ff; }
+
+    /* Galerie */
     .galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-    .galerie img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; background: var(--carte); border: 2px solid var(--carte); }
-    .galerie img:hover { border-color: var(--bleu); }
+    .galerie img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; background: var(--bleu-clair); }
 
-    .fond-bleu { background: linear-gradient(135deg, var(--noir-bleu), #0d2a6b); max-width: 100%; }
-    .fond-bleu .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; }
-    .apropos { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
-    .apropos h2 { font-size: 40px; color: var(--blanc); margin-bottom: 20px; text-transform: uppercase; }
-    .apropos h2 span { color: var(--bleu-clair); }
-    .apropos p { margin-bottom: 15px; color: var(--texte); }
-    .apropos img { border-radius: 12px; height: 380px; width: 100%; object-fit: cover; border: 3px solid var(--bleu); background: var(--carte); }
-
-    .contact { background: var(--noir-bleu); max-width: 100%; }
-    .contact .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; }
-    form { display: grid; gap: 15px; max-width: 600px; margin: 35px auto 0; }
-    input, textarea { padding: 14px; border: 1px solid #22305a; border-radius: 8px; font-size: 15px; font-family: inherit; background: var(--carte); color: var(--texte); }
-    input::placeholder, textarea::placeholder { color: var(--gris); }
+    /* Contact */
+    .contact-grille { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+    .infos { background: var(--bleu-clair); padding: 30px; border-radius: 10px; }
+    .infos h3 { color: var(--bleu-nuit); margin-bottom: 12px; }
+    .infos p { margin-bottom: 10px; color: var(--texte); }
+    form { display: grid; gap: 15px; }
+    input, textarea { padding: 14px; border: 1px solid #c9d7f2; border-radius: 6px; font-size: 15px; font-family: inherit; }
     textarea { min-height: 130px; }
-    button { background: var(--bleu); color: var(--blanc); border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
-    button:hover { background: var(--bleu-clair); }
+    button { background: var(--bleu); color: var(--blanc); border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #1557d6; }
 
-    footer { background: var(--noir); color: var(--gris); text-align: center; padding: 35px 20px; border-top: 3px solid var(--bleu); }
-    footer .logo-box { display: inline-block; background: var(--blanc); border-radius: 8px; padding: 6px 12px; margin-bottom: 12px; }
-    footer img { height: 60px; }
+    /* Pied de page */
+    footer { background: var(--bleu-nuit); color: #d6e4ff; padding: 50px 20px 25px; }
+    .pied { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+    .pied h4 { color: var(--blanc); margin-bottom: 12px; }
+    .pied a { display: block; color: #d6e4ff; text-decoration: none; margin-bottom: 8px; }
+    .pied a:hover { color: var(--blanc); }
+    .pied .logo-box { display: inline-block; background: var(--blanc); border-radius: 8px; padding: 6px 12px; margin-bottom: 14px; }
+    .pied .logo-box img { height: 55px; }
+    .copyright { text-align: center; margin-top: 35px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; }
 
+    @media (max-width: 900px) {
+      .fond-clair .contenu, .contact-grille, .pied { grid-template-columns: 1fr; }
+      .fond-clair img { height: 300px; }
+    }
     @media (max-width: 768px) {
-      header { flex-direction: column; gap: 10px; }
-      nav a { margin: 0 10px; }
+      header { flex-direction: column; align-items: flex-start; }
+      .btn-haut { align-self: stretch; text-align: center; }
+      .hero { padding: 80px 20px; }
       .hero h1 { font-size: 34px; }
-      .titre, .apropos h2 { font-size: 30px; }
-      .apropos { grid-template-columns: 1fr; }
+      .titre { font-size: 30px; }
+      .fond-clair h2, .bandeau h2 { font-size: 28px; }
+      .valeurs { grid-template-columns: 1fr; }
+      .topbar { justify-content: center; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <div class="topbar">
+    <span>Forum des Décideurs</span>
+    <span>Organisation sociale, humanitaire, éducative et chrétienne</span>
+  </div>
+
   <header>
-    <div class="logo-box"><img src="logo-forum.png" alt="Logo Forum des Décideurs"></div>
+    <img src="logo-forum.png" alt="Logo Forum des Décideurs">
     <nav>
       <a href="#accueil">Accueil</a>
       <a href="#actions">Nos actions</a>
+      <a href="#mission">À propos</a>
       <a href="#galerie">Galerie</a>
-      <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="btn-haut" href="#contact">Nous rejoindre</a>
   </header>
 
   <div class="hero" id="accueil">
-    <span class="tag">Forum des Décideurs</span>
-    <h1>Au service des personnes, <span>fondés sur le Christ</span></h1>
-    <p>Une organisation sociale, humanitaire, éducative et chrétienne, au service des personnes et de la communauté.</p>
-    <a class="bouton" href="#contact">Nous rejoindre</a>
+    <div class="hero-contenu">
+      <span class="tag">Fondé sur le Christ</span>
+      <h1>Ensemble, <span>bâtissons</span> un avenir plus solidaire</h1>
+      <p>Une organisation sociale, humanitaire, éducative et chrétienne, au service des personnes et de la communauté.</p>
+      <div class="boutons">
+        <a class="bouton bouton-plein" href="#actions">Découvrir nos actions</a>
+        <a class="bouton bouton-clair" href="#contact">Nous contacter</a>
+      </div>
+    </div>
   </div>
 
   <section id="actions">
-    <h2 class="titre">Nos <span>actions</span></h2>
+    <h2 class="titre">Nos actions</h2>
     <p class="sous-titre">Au service des plus fragiles et de la jeunesse, dans un esprit de solidarité et d'entraide.</p>
     <div class="grille">
-      <div class="carte">
-        <span class="num">1</span>
-        <h3>Aide aux sans-abri</h3>
-        <p>Apporter un soutien concret aux personnes qui vivent dans la rue.</p>
-      </div>
-      <div class="carte">
-        <span class="num">2</span>
-        <h3>Assistance aux personnes âgées</h3>
-        <p>Accompagner et soutenir les personnes âgées dans leur quotidien.</p>
-      </div>
-      <div class="carte">
-        <span class="num">3</span>
-        <h3>Soutien aux veufs et aux veuves</h3>
-        <p>Être présent auprès de ceux qui traversent le deuil et la solitude.</p>
-      </div>
-      <div class="carte">
-        <span class="num">4</span>
-        <h3>Accompagnement des étudiants</h3>
-        <p>Encourager les étudiants et les élèves dans leur parcours scolaire et personnel.</p>
-      </div>
-      <div class="carte">
-        <span class="num">5</span>
-        <h3>Éducation et leadership</h3>
-        <p>Promouvoir l'éducation et former des leaders responsables.</p>
-      </div>
-      <div class="carte">
-        <span class="num">6</span>
-        <h3>Solidarité et entraide</h3>
-        <p>Développer le partage et l'entraide au sein de la communauté.</p>
-      </div>
-      <div class="carte">
-        <span class="num">7</span>
-        <h3>Valeurs chrétiennes</h3>
-        <p>Promouvoir les valeurs chrétiennes comme fondement de nos engagements.</p>
-      </div>
+      <div class="carte"><span class="num">1</span><h3>Aide aux sans-abri</h3><p>Apporter un soutien concret aux personnes qui vivent dans la rue.</p></div>
+      <div class="carte"><span class="num">2</span><h3>Assistance aux personnes âgées</h3><p>Accompagner et soutenir les personnes âgées dans leur quotidien.</p></div>
+      <div class="carte"><span class="num">3</span><h3>Soutien aux veufs et aux veuves</h3><p>Être présent auprès de ceux qui traversent le deuil et la solitude.</p></div>
+      <div class="carte"><span class="num">4</span><h3>Accompagnement des étudiants</h3><p>Encourager les étudiants et les élèves dans leur parcours scolaire et personnel.</p></div>
+      <div class="carte"><span class="num">5</span><h3>Éducation et leadership</h3><p>Promouvoir l'éducation et former des leaders responsables.</p></div>
+      <div class="carte"><span class="num">6</span><h3>Solidarité et entraide</h3><p>Développer le partage et l'entraide au sein de la communauté.</p></div>
+      <div class="carte"><span class="num">7</span><h3>Valeurs chrétiennes</h3><p>Promouvoir les valeurs chrétiennes comme fondement de nos engagements.</p></div>
     </div>
   </section>
 
+  <div class="fond-clair" id="mission">
+    <div class="contenu">
+      <div>
+        <h2>À propos <span>du Forum</span></h2>
+        <p>Le Forum des Décideurs est une organisation sociale, humanitaire, éducative et chrétienne. Son fondement spirituel et moral est le Christ.</p>
+        <p>Nous agissons pour aider les personnes sans-abri, assister les personnes âgées, soutenir les veufs et les veuves, accompagner les étudiants et promouvoir l'éducation et le leadership.</p>
+        <div class="valeurs">
+          <div><strong>Foi</strong>Un fondement spirituel et moral en Christ.</div>
+          <div><strong>Solidarité</strong>Le partage et l'entraide au cœur de nos actions.</div>
+          <div><strong>Éducation</strong>Former et accompagner la jeunesse.</div>
+          <div><strong>Service</strong>Être présent auprès des plus fragiles.</div>
+        </div>
+      </div>
+      <img src="photo-8.jpg" alt="Le Forum des Décideurs en action">
+    </div>
+  </div>
+
+  <div class="bandeau">
+    <h2>Rejoignez le mouvement</h2>
+    <p>Que vous souhaitiez donner de votre temps, soutenir une action ou simplement en savoir plus, nous serons heureux d'échanger avec vous.</p>
+    <a class="bouton bouton-clair" href="#contact">Nous écrire</a>
+  </div>
+
   <section id="galerie">
-    <h2 class="titre">Nos <span>moments forts</span></h2>
+    <h2 class="titre">Nos moments forts</h2>
     <p class="sous-titre">Quelques instants partagés avec les enfants et les équipes.</p>
     <div class="galerie">
       <img src="photo-6.jpg" alt="Groupe lors d'une rencontre">
@@ -152,23 +194,16 @@
     </div>
   </section>
 
-  <section class="fond-bleu" id="apropos">
-    <div class="contenu">
-      <div class="apropos">
-        <div>
-          <h2>À <span>propos</span></h2>
-          <p>Le Forum des Décideurs est une organisation sociale, humanitaire, éducative et chrétienne. Son fondement spirituel et moral est le Christ.</p>
-          <p>Nous agissons pour aider les personnes sans-abri, assister les personnes âgées, soutenir les veufs et les veuves, accompagner les étudiants et promouvoir l'éducation et le leadership.</p>
-        </div>
-        <img src="photo-6.jpg" alt="À propos du Forum des Décideurs">
+  <section id="contact">
+    <h2 class="titre">Contact</h2>
+    <p class="sous-titre">Une question ? Écrivez-nous.</p>
+    <div class="contact-grille">
+      <div class="infos">
+        <h3>Nous trouver</h3>
+        <p>Adresse : à compléter</p>
+        <p>Téléphone : à compléter</p>
+        <p>E-mail : à compléter</p>
       </div>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="contenu">
-      <h2 class="titre">Me <span>contacter</span></h2>
-      <p class="sous-titre">Une question ? Écrivez-nous.</p>
       <form>
         <input type="text" placeholder="Nom" required>
         <input type="email" placeholder="Email" required>
@@ -180,9 +215,510 @@
   </section>
 
   <footer>
-    <div class="logo-box"><img src="logo-forum.png" alt="Logo Forum des Décideurs"></div>
-    <p>© 2026 Forum des Décideurs. Tous droits réservés.</p>
+    <div class="pied">
+      <div>
+        <div class="logo-box"><img src="logo-forum.png" alt="Logo Forum des Décideurs"></div>
+        <p>Organisation sociale, humanitaire, éducative et chrétienne, fondée sur le Christ.</p>
+      </div>
+      <div>
+        <h4>Liens utiles</h4>
+        <a href="#accueil">Accueil</a>
+        <a href="#actions">Nos actions</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Nos domaines</h4>
+        <a href="#actions">Aide aux sans-abri</a>
+        <a href="#actions">Personnes âgées</a>
+        <a href="#actions">Veufs et veuves</a>
+        <a href="#actions">Étudiants</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Forum des Décideurs. Tous droits réservés.</p>
   </footer>
 
 </body>
-    </html>
+  </html><!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum des Décideurs</title>
+  <style>
+    :root {
+      --bleu-nuit: #0a2a66;
+      --bleu: #1e6bff;
+      --bleu-clair: #e8f0ff;
+      --blanc: #ffffff;
+      --gris-fond: #f5f8ff;
+      --texte: #1d2433;
+      --gris: #5a6378;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--texte); background: var(--blanc); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* Barre supérieure */
+    .topbar { background: var(--bleu-nuit); color: var(--blanc); font-size: 14px; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+    /* En-tête */
+    header { background: var(--blanc); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(10,42,102,0.12); z-index: 10; }
+    header img { height: 55px; }
+    nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    nav a { color: var(--texte); text-decoration: none; font-weight: bold; font-size: 15px; padding: 4px 0; }
+    nav a:hover { color: var(--bleu); }
+    .btn-haut { background: var(--bleu); color: var(--blanc); padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 15px; }
+
+    /* Bannière */
+    .hero { background: linear-gradient(90deg, rgba(10,42,102,0.92) 40%, rgba(10,42,102,0.55)), url('photo-7.jpg') center/cover; color: var(--blanc); padding: 110px 20px; }
+    .hero-contenu { max-width: 1100px; margin: auto; }
+    .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; font-size: 14px; margin-bottom: 18px; }
+    .hero h1 { font-size: 50px; line-height: 1.15; margin-bottom: 18px; max-width: 700px; }
+    .hero h1 span { color: #9cc4ff; }
+    .hero p { font-size: 19px; max-width: 620px; margin-bottom: 32px; }
+    .boutons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .bouton { display: inline-block; padding: 14px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    .bouton-plein { background: var(--bleu); color: var(--blanc); }
+    .bouton-plein:hover { background: #1557d6; }
+    .bouton-clair { background: var(--blanc); color: var(--bleu-nuit); }
+    .bouton-clair:hover { background: var(--bleu-clair); }
+
+    /* Sections générales */
+    section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+    .titre { font-size: 38px; color: var(--bleu-nuit); text-align: center; margin-bottom: 12px; }
+    .titre::after { content: ""; display: block; width: 60px; height: 4px; background: var(--bleu); margin: 14px auto 0; border-radius: 2px; }
+    .sous-titre { text-align: center; color: var(--gris); max-width: 680px; margin: 0 auto 45px; }
+
+    /* Actions */
+    .grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+    .carte { background: var(--blanc); border: 1px solid #dde6f7; border-radius: 10px; padding: 26px; box-shadow: 0 4px 16px rgba(10,42,102,0.06); border-top: 4px solid var(--bleu); }
+    .carte .num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bleu-clair); color: var(--bleu); font-weight: bold; margin-bottom: 16px; }
+    .carte h3 { color: var(--bleu-nuit); font-size: 19px; margin-bottom: 8px; }
+    .carte p { color: var(--gris); }
+
+    /* Mission */
+    .fond-clair { background: var(--gris-fond); max-width: 100%; }
+    .fond-clair .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .fond-clair h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 18px; }
+    .fond-clair h2 span { color: var(--bleu); }
+    .fond-clair p { margin-bottom: 15px; color: var(--texte); }
+    .fond-clair img { border-radius: 12px; height: 400px; width: 100%; object-fit: cover; }
+    .valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+    .valeurs div { background: var(--blanc); border-left: 4px solid var(--bleu); padding: 14px 16px; border-radius: 6px; }
+    .valeurs strong { color: var(--bleu-nuit); display: block; margin-bottom: 4px; }
+
+    /* Bandeau bleu */
+    .bandeau { background: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 60px 20px; }
+    .bandeau h2 { font-size: 32px; margin-bottom: 14px; }
+    .bandeau p { max-width: 700px; margin: 0 auto 26px; color: #d6e4ff; }
+
+    /* Galerie */
+    .galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+    .galerie img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; background: var(--bleu-clair); }
+
+    /* Contact */
+    .contact-grille { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+    .infos { background: var(--bleu-clair); padding: 30px; border-radius: 10px; }
+    .infos h3 { color: var(--bleu-nuit); margin-bottom: 12px; }
+    .infos p { margin-bottom: 10px; color: var(--texte); }
+    form { display: grid; gap: 15px; }
+    input, textarea { padding: 14px; border: 1px solid #c9d7f2; border-radius: 6px; font-size: 15px; font-family: inherit; }
+    textarea { min-height: 130px; }
+    button { background: var(--bleu); color: var(--blanc); border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #1557d6; }
+
+    /* Pied de page */
+    footer { background: var(--bleu-nuit); color: #d6e4ff; padding: 50px 20px 25px; }
+    .pied { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+    .pied h4 { color: var(--blanc); margin-bottom: 12px; }
+    .pied a { display: block; color: #d6e4ff; text-decoration: none; margin-bottom: 8px; }
+    .pied a:hover { color: var(--blanc); }
+    .pied .logo-box { display: inline-block; background: var(--blanc); border-radius: 8px; padding: 6px 12px; margin-bottom: 14px; }
+    .pied .logo-box img { height: 55px; }
+    .copyright { text-align: center; margin-top: 35px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .fond-clair .contenu, .contact-grille, .pied { grid-template-columns: 1fr; }
+      .fond-clair img { height: 300px; }
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .btn-haut { align-self: stretch; text-align: center; }
+      .hero { padding: 80px 20px; }
+      .hero h1 { font-size: 34px; }
+      .titre { font-size: 30px; }
+      .fond-clair h2, .bandeau h2 { font-size: 28px; }
+      .valeurs { grid-template-columns: 1fr; }
+      .topbar { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Forum des Décideurs</span>
+    <span>Organisation sociale, humanitaire, éducative et chrétienne</span>
+  </div>
+
+  <header>
+    <img src="logo-forum.png" alt="Logo Forum des Décideurs">
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#actions">Nos actions</a>
+      <a href="#mission">À propos</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn-haut" href="#contact">Nous rejoindre</a>
+  </header>
+
+  <div class="hero" id="accueil">
+    <div class="hero-contenu">
+      <span class="tag">Fondé sur le Christ</span>
+      <h1>Ensemble, <span>bâtissons</span> un avenir plus solidaire</h1>
+      <p>Une organisation sociale, humanitaire, éducative et chrétienne, au service des personnes et de la communauté.</p>
+      <div class="boutons">
+        <a class="bouton bouton-plein" href="#actions">Découvrir nos actions</a>
+        <a class="bouton bouton-clair" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="actions">
+    <h2 class="titre">Nos actions</h2>
+    <p class="sous-titre">Au service des plus fragiles et de la jeunesse, dans un esprit de solidarité et d'entraide.</p>
+    <div class="grille">
+      <div class="carte"><span class="num">1</span><h3>Aide aux sans-abri</h3><p>Apporter un soutien concret aux personnes qui vivent dans la rue.</p></div>
+      <div class="carte"><span class="num">2</span><h3>Assistance aux personnes âgées</h3><p>Accompagner et soutenir les personnes âgées dans leur quotidien.</p></div>
+      <div class="carte"><span class="num">3</span><h3>Soutien aux veufs et aux veuves</h3><p>Être présent auprès de ceux qui traversent le deuil et la solitude.</p></div>
+      <div class="carte"><span class="num">4</span><h3>Accompagnement des étudiants</h3><p>Encourager les étudiants et les élèves dans leur parcours scolaire et personnel.</p></div>
+      <div class="carte"><span class="num">5</span><h3>Éducation et leadership</h3><p>Promouvoir l'éducation et former des leaders responsables.</p></div>
+      <div class="carte"><span class="num">6</span><h3>Solidarité et entraide</h3><p>Développer le partage et l'entraide au sein de la communauté.</p></div>
+      <div class="carte"><span class="num">7</span><h3>Valeurs chrétiennes</h3><p>Promouvoir les valeurs chrétiennes comme fondement de nos engagements.</p></div>
+    </div>
+  </section>
+
+  <div class="fond-clair" id="mission">
+    <div class="contenu">
+      <div>
+        <h2>À propos <span>du Forum</span></h2>
+        <p>Le Forum des Décideurs est une organisation sociale, humanitaire, éducative et chrétienne. Son fondement spirituel et moral est le Christ.</p>
+        <p>Nous agissons pour aider les personnes sans-abri, assister les personnes âgées, soutenir les veufs et les veuves, accompagner les étudiants et promouvoir l'éducation et le leadership.</p>
+        <div class="valeurs">
+          <div><strong>Foi</strong>Un fondement spirituel et moral en Christ.</div>
+          <div><strong>Solidarité</strong>Le partage et l'entraide au cœur de nos actions.</div>
+          <div><strong>Éducation</strong>Former et accompagner la jeunesse.</div>
+          <div><strong>Service</strong>Être présent auprès des plus fragiles.</div>
+        </div>
+      </div>
+      <img src="photo-8.jpg" alt="Le Forum des Décideurs en action">
+    </div>
+  </div>
+
+  <div class="bandeau">
+    <h2>Rejoignez le mouvement</h2>
+    <p>Que vous souhaitiez donner de votre temps, soutenir une action ou simplement en savoir plus, nous serons heureux d'échanger avec vous.</p>
+    <a class="bouton bouton-clair" href="#contact">Nous écrire</a>
+  </div>
+
+  <section id="galerie">
+    <h2 class="titre">Nos moments forts</h2>
+    <p class="sous-titre">Quelques instants partagés avec les enfants et les équipes.</p>
+    <div class="galerie">
+      <img src="photo-6.jpg" alt="Groupe lors d'une rencontre">
+      <img src="photo-7.jpg" alt="Enfants souriants">
+      <img src="photo-8.jpg" alt="Moment de visite">
+      <img src="photo-9.jpg" alt="Cuisine solidaire">
+      <img src="photo-10.jpg" alt="Préparation des repas">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="titre">Contact</h2>
+    <p class="sous-titre">Une question ? Écrivez-nous.</p>
+    <div class="contact-grille">
+      <div class="infos">
+        <h3>Nous trouver</h3>
+        <p>Adresse : à compléter</p>
+        <p>Téléphone : à compléter</p>
+        <p>E-mail : à compléter</p>
+      </div>
+      <form>
+        <input type="text" placeholder="Nom" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Sujet">
+        <textarea placeholder="Votre message"></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="pied">
+      <div>
+        <div class="logo-box"><img src="logo-forum.png" alt="Logo Forum des Décideurs"></div>
+        <p>Organisation sociale, humanitaire, éducative et chrétienne, fondée sur le Christ.</p>
+      </div>
+      <div>
+        <h4>Liens utiles</h4>
+        <a href="#accueil">Accueil</a>
+        <a href="#actions">Nos actions</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Nos domaines</h4>
+        <a href="#actions">Aide aux sans-abri</a>
+        <a href="#actions">Personnes âgées</a>
+        <a href="#actions">Veufs et veuves</a>
+        <a href="#actions">Étudiants</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Forum des Décideurs. Tous droits réservés.</p>
+  </footer>
+
+</body>
+  </html><!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum des Décideurs</title>
+  <style>
+    :root {
+      --bleu-nuit: #0a2a66;
+      --bleu: #1e6bff;
+      --bleu-clair: #e8f0ff;
+      --blanc: #ffffff;
+      --gris-fond: #f5f8ff;
+      --texte: #1d2433;
+      --gris: #5a6378;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: var(--texte); background: var(--blanc); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    /* Barre supérieure */
+    .topbar { background: var(--bleu-nuit); color: var(--blanc); font-size: 14px; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+    /* En-tête */
+    header { background: var(--blanc); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(10,42,102,0.12); z-index: 10; }
+    header img { height: 55px; }
+    nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    nav a { color: var(--texte); text-decoration: none; font-weight: bold; font-size: 15px; padding: 4px 0; }
+    nav a:hover { color: var(--bleu); }
+    .btn-haut { background: var(--bleu); color: var(--blanc); padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 15px; }
+
+    /* Bannière */
+    .hero { background: linear-gradient(90deg, rgba(10,42,102,0.92) 40%, rgba(10,42,102,0.55)), url('photo-7.jpg') center/cover; color: var(--blanc); padding: 110px 20px; }
+    .hero-contenu { max-width: 1100px; margin: auto; }
+    .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; font-size: 14px; margin-bottom: 18px; }
+    .hero h1 { font-size: 50px; line-height: 1.15; margin-bottom: 18px; max-width: 700px; }
+    .hero h1 span { color: #9cc4ff; }
+    .hero p { font-size: 19px; max-width: 620px; margin-bottom: 32px; }
+    .boutons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .bouton { display: inline-block; padding: 14px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    .bouton-plein { background: var(--bleu); color: var(--blanc); }
+    .bouton-plein:hover { background: #1557d6; }
+    .bouton-clair { background: var(--blanc); color: var(--bleu-nuit); }
+    .bouton-clair:hover { background: var(--bleu-clair); }
+
+    /* Sections générales */
+    section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+    .titre { font-size: 38px; color: var(--bleu-nuit); text-align: center; margin-bottom: 12px; }
+    .titre::after { content: ""; display: block; width: 60px; height: 4px; background: var(--bleu); margin: 14px auto 0; border-radius: 2px; }
+    .sous-titre { text-align: center; color: var(--gris); max-width: 680px; margin: 0 auto 45px; }
+
+    /* Actions */
+    .grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+    .carte { background: var(--blanc); border: 1px solid #dde6f7; border-radius: 10px; padding: 26px; box-shadow: 0 4px 16px rgba(10,42,102,0.06); border-top: 4px solid var(--bleu); }
+    .carte .num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bleu-clair); color: var(--bleu); font-weight: bold; margin-bottom: 16px; }
+    .carte h3 { color: var(--bleu-nuit); font-size: 19px; margin-bottom: 8px; }
+    .carte p { color: var(--gris); }
+
+    /* Mission */
+    .fond-clair { background: var(--gris-fond); max-width: 100%; }
+    .fond-clair .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .fond-clair h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 18px; }
+    .fond-clair h2 span { color: var(--bleu); }
+    .fond-clair p { margin-bottom: 15px; color: var(--texte); }
+    .fond-clair img { border-radius: 12px; height: 400px; width: 100%; object-fit: cover; }
+    .valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+    .valeurs div { background: var(--blanc); border-left: 4px solid var(--bleu); padding: 14px 16px; border-radius: 6px; }
+    .valeurs strong { color: var(--bleu-nuit); display: block; margin-bottom: 4px; }
+
+    /* Bandeau bleu */
+    .bandeau { background: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 60px 20px; }
+    .bandeau h2 { font-size: 32px; margin-bottom: 14px; }
+    .bandeau p { max-width: 700px; margin: 0 auto 26px; color: #d6e4ff; }
+
+    /* Galerie */
+    .galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+    .galerie img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; background: var(--bleu-clair); }
+
+    /* Contact */
+    .contact-grille { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+    .infos { background: var(--bleu-clair); padding: 30px; border-radius: 10px; }
+    .infos h3 { color: var(--bleu-nuit); margin-bottom: 12px; }
+    .infos p { margin-bottom: 10px; color: var(--texte); }
+    form { display: grid; gap: 15px; }
+    input, textarea { padding: 14px; border: 1px solid #c9d7f2; border-radius: 6px; font-size: 15px; font-family: inherit; }
+    textarea { min-height: 130px; }
+    button { background: var(--bleu); color: var(--blanc); border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #1557d6; }
+
+    /* Pied de page */
+    footer { background: var(--bleu-nuit); color: #d6e4ff; padding: 50px 20px 25px; }
+    .pied { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+    .pied h4 { color: var(--blanc); margin-bottom: 12px; }
+    .pied a { display: block; color: #d6e4ff; text-decoration: none; margin-bottom: 8px; }
+    .pied a:hover { color: var(--blanc); }
+    .pied .logo-box { display: inline-block; background: var(--blanc); border-radius: 8px; padding: 6px 12px; margin-bottom: 14px; }
+    .pied .logo-box img { height: 55px; }
+    .copyright { text-align: center; margin-top: 35px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .fond-clair .contenu, .contact-grille, .pied { grid-template-columns: 1fr; }
+      .fond-clair img { height: 300px; }
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .btn-haut { align-self: stretch; text-align: center; }
+      .hero { padding: 80px 20px; }
+      .hero h1 { font-size: 34px; }
+      .titre { font-size: 30px; }
+      .fond-clair h2, .bandeau h2 { font-size: 28px; }
+      .valeurs { grid-template-columns: 1fr; }
+      .topbar { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Forum des Décideurs</span>
+    <span>Organisation sociale, humanitaire, éducative et chrétienne</span>
+  </div>
+
+  <header>
+    <img src="logo-forum.png" alt="Logo Forum des Décideurs">
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#actions">Nos actions</a>
+      <a href="#mission">À propos</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn-haut" href="#contact">Nous rejoindre</a>
+  </header>
+
+  <div class="hero" id="accueil">
+    <div class="hero-contenu">
+      <span class="tag">Fondé sur le Christ</span>
+      <h1>Ensemble, <span>bâtissons</span> un avenir plus solidaire</h1>
+      <p>Une organisation sociale, humanitaire, éducative et chrétienne, au service des personnes et de la communauté.</p>
+      <div class="boutons">
+        <a class="bouton bouton-plein" href="#actions">Découvrir nos actions</a>
+        <a class="bouton bouton-clair" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="actions">
+    <h2 class="titre">Nos actions</h2>
+    <p class="sous-titre">Au service des plus fragiles et de la jeunesse, dans un esprit de solidarité et d'entraide.</p>
+    <div class="grille">
+      <div class="carte"><span class="num">1</span><h3>Aide aux sans-abri</h3><p>Apporter un soutien concret aux personnes qui vivent dans la rue.</p></div>
+      <div class="carte"><span class="num">2</span><h3>Assistance aux personnes âgées</h3><p>Accompagner et soutenir les personnes âgées dans leur quotidien.</p></div>
+      <div class="carte"><span class="num">3</span><h3>Soutien aux veufs et aux veuves</h3><p>Être présent auprès de ceux qui traversent le deuil et la solitude.</p></div>
+      <div class="carte"><span class="num">4</span><h3>Accompagnement des étudiants</h3><p>Encourager les étudiants et les élèves dans leur parcours scolaire et personnel.</p></div>
+      <div class="carte"><span class="num">5</span><h3>Éducation et leadership</h3><p>Promouvoir l'éducation et former des leaders responsables.</p></div>
+      <div class="carte"><span class="num">6</span><h3>Solidarité et entraide</h3><p>Développer le partage et l'entraide au sein de la communauté.</p></div>
+      <div class="carte"><span class="num">7</span><h3>Valeurs chrétiennes</h3><p>Promouvoir les valeurs chrétiennes comme fondement de nos engagements.</p></div>
+    </div>
+  </section>
+
+  <div class="fond-clair" id="mission">
+    <div class="contenu">
+      <div>
+        <h2>À propos <span>du Forum</span></h2>
+        <p>Le Forum des Décideurs est une organisation sociale, humanitaire, éducative et chrétienne. Son fondement spirituel et moral est le Christ.</p>
+        <p>Nous agissons pour aider les personnes sans-abri, assister les personnes âgées, soutenir les veufs et les veuves, accompagner les étudiants et promouvoir l'éducation et le leadership.</p>
+        <div class="valeurs">
+          <div><strong>Foi</strong>Un fondement spirituel et moral en Christ.</div>
+          <div><strong>Solidarité</strong>Le partage et l'entraide au cœur de nos actions.</div>
+          <div><strong>Éducation</strong>Former et accompagner la jeunesse.</div>
+          <div><strong>Service</strong>Être présent auprès des plus fragiles.</div>
+        </div>
+      </div>
+      <img src="photo-8.jpg" alt="Le Forum des Décideurs en action">
+    </div>
+  </div>
+
+  <div class="bandeau">
+    <h2>Rejoignez le mouvement</h2>
+    <p>Que vous souhaitiez donner de votre temps, soutenir une action ou simplement en savoir plus, nous serons heureux d'échanger avec vous.</p>
+    <a class="bouton bouton-clair" href="#contact">Nous écrire</a>
+  </div>
+
+  <section id="galerie">
+    <h2 class="titre">Nos moments forts</h2>
+    <p class="sous-titre">Quelques instants partagés avec les enfants et les équipes.</p>
+    <div class="galerie">
+      <img src="photo-6.jpg" alt="Groupe lors d'une rencontre">
+      <img src="photo-7.jpg" alt="Enfants souriants">
+      <img src="photo-8.jpg" alt="Moment de visite">
+      <img src="photo-9.jpg" alt="Cuisine solidaire">
+      <img src="photo-10.jpg" alt="Préparation des repas">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="titre">Contact</h2>
+    <p class="sous-titre">Une question ? Écrivez-nous.</p>
+    <div class="contact-grille">
+      <div class="infos">
+        <h3>Nous trouver</h3>
+        <p>Adresse : à compléter</p>
+        <p>Téléphone : à compléter</p>
+        <p>E-mail : à compléter</p>
+      </div>
+      <form>
+        <input type="text" placeholder="Nom" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Sujet">
+        <textarea placeholder="Votre message"></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="pied">
+      <div>
+        <div class="logo-box"><img src="logo-forum.png" alt="Logo Forum des Décideurs"></div>
+        <p>Organisation sociale, humanitaire, éducative et chrétienne, fondée sur le Christ.</p>
+      </div>
+      <div>
+        <h4>Liens utiles</h4>
+        <a href="#accueil">Accueil</a>
+        <a href="#actions">Nos actions</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Nos domaines</h4>
+        <a href="#actions">Aide aux sans-abri</a>
+        <a href="#actions">Personnes âgées</a>
+        <a href="#actions">Veufs et veuves</a>
+        <a href="#actions">Étudiants</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Forum des Décideurs. Tous droits réservés.</p>
+  </footer>
+
+</body>
+        </html>
