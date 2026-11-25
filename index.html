@@ -28,6 +28,12 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; }
 
+    /* Écran d'ouverture */
+    #intro { position: fixed; inset: 0; background: var(--bleu-nuit); display: flex; align-items: center; justify-content: center; z-index: 1000; animation: disparaitre 0.6s ease 2.4s forwards; }
+    #intro img { height: 160px; width: auto; background: var(--blanc); border-radius: 16px; padding: 12px; animation: apparaitre 1s ease forwards; }
+    @keyframes apparaitre { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    @keyframes disparaitre { to { opacity: 0; visibility: hidden; } }
+
     /* Barre supérieure */
     .topbar { background: var(--bleu-nuit); color: var(--blanc); font-size: 14px; padding: 8px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
@@ -66,15 +72,28 @@
     .carte h3 { color: var(--bleu-nuit); font-size: 19px; margin-bottom: 8px; }
     .carte p { color: var(--gris); }
 
+    /* Boutique */
+    .fond-gris { background: var(--gris-fond); max-width: 100%; }
+    .fond-gris .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; }
+    .produits { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; }
+    .produit { background: var(--blanc); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(10,42,102,0.08); }
+    .produit img { width: 100%; height: 220px; object-fit: cover; background: var(--bleu-clair); }
+    .produit div { padding: 18px; }
+    .produit h3 { color: var(--bleu-nuit); font-size: 18px; margin-bottom: 6px; }
+    .produit p { color: var(--gris); font-size: 14px; margin-bottom: 14px; }
+    .produit a { display: inline-block; background: var(--bleu); color: var(--blanc); padding: 10px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; }
+    .produit a:hover { background: #1557d6; }
+    .note-boutique { text-align: center; color: var(--gris); margin-top: 35px; }
+
     /* Mission */
-    .fond-clair { background: var(--gris-fond); max-width: 100%; }
+    .fond-clair { background: var(--blanc); max-width: 100%; }
     .fond-clair .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
     .fond-clair h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 18px; }
     .fond-clair h2 span { color: var(--bleu); }
     .fond-clair p { margin-bottom: 15px; color: var(--texte); }
     .fond-clair img { border-radius: 12px; height: 400px; width: 100%; object-fit: cover; }
     .valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
-    .valeurs div { background: var(--blanc); border-left: 4px solid var(--bleu); padding: 14px 16px; border-radius: 6px; }
+    .valeurs div { background: var(--gris-fond); border-left: 4px solid var(--bleu); padding: 14px 16px; border-radius: 6px; }
     .valeurs strong { color: var(--bleu-nuit); display: block; margin-bottom: 4px; }
 
     /* Bandeau bleu */
@@ -126,6 +145,10 @@
 </head>
 <body>
 
+  <div id="intro">
+    <img src="logo-forum.png" alt="Logo Forum des Décideurs">
+  </div>
+
   <div class="topbar">
     <span>Forum des Décideurs</span>
     <span>Organisation sociale, humanitaire, éducative et chrétienne</span>
@@ -136,6 +159,7 @@
     <nav>
       <a href="#accueil">Accueil</a>
       <a href="#actions">Nos actions</a>
+      <a href="#boutique">Nos articles</a>
       <a href="#mission">À propos</a>
       <a href="#galerie">Galerie</a>
       <a href="#contact">Contact</a>
@@ -168,6 +192,56 @@
       <div class="carte"><span class="num">7</span><h3>Valeurs chrétiennes</h3><p>Promouvoir les valeurs chrétiennes comme fondement de nos engagements.</p></div>
     </div>
   </section>
+
+  <div class="fond-gris" id="boutique">
+    <div class="contenu">
+      <h2 class="titre">Nos articles</h2>
+      <p class="sous-titre">Les articles du forum sont remis à ceux qui rejoignent notre communauté.</p>
+      <div class="produits">
+        <div class="produit">
+          <img src="polo.jpg" alt="Polo du Forum des Décideurs">
+          <div>
+            <h3>Polo</h3>
+            <p>Polo aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="pull.jpg" alt="Pull du Forum des Décideurs">
+          <div>
+            <h3>Pull</h3>
+            <p>Pull aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="sac.jpg" alt="Sac du Forum des Décideurs">
+          <div>
+            <h3>Sac</h3>
+            <p>Sac aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="stylo.jpg" alt="Stylo du Forum des Décideurs">
+          <div>
+            <h3>Stylo</h3>
+            <p>Stylo aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="chemise.jpg" alt="Chemise du Forum des Décideurs">
+          <div>
+            <h3>Chemise</h3>
+            <p>Chemise aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+      </div>
+      <p class="note-boutique">Pour recevoir un article, contactez-nous ou rejoignez le forum.</p>
+    </div>
+  </div>
 
   <div class="fond-clair" id="mission">
     <div class="contenu">
@@ -210,7 +284,6 @@
     <div class="contact-grille">
       <div class="infos">
         <h3>Nous trouver</h3>
-        <p>Adresse : à compléter</p>
         <p>Téléphone : à compléter</p>
         <p>E-mail : à compléter</p>
       </div>
@@ -234,6 +307,7 @@
         <h4>Liens utiles</h4>
         <a href="#accueil">Accueil</a>
         <a href="#actions">Nos actions</a>
+        <a href="#boutique">Nos articles</a>
         <a href="#galerie">Galerie</a>
         <a href="#contact">Contact</a>
       </div>
@@ -249,4 +323,4 @@
   </footer>
 
 </body>
-    </html>
+  </html>
