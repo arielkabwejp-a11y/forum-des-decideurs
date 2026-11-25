@@ -83,4 +83,271 @@
     .fond-gris { background: var(--gris-fond); max-width: 100%; }
     .fond-gris .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; }
     .produits { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; }
-    .produit { background: var(--blanc); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(10,42,102,0.08);
+    .produit { background: var(--blanc); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(10,42,102,0.08); }
+    .produit img { width: 100%; height: 220px; object-fit: cover; background: var(--bleu-clair); cursor: zoom-in; }
+    .produit div { padding: 18px; }
+    .produit h3 { color: var(--bleu-nuit); font-size: 18px; margin-bottom: 6px; }
+    .produit p { color: var(--gris); font-size: 14px; margin-bottom: 14px; }
+    .produit a { display: inline-block; background: var(--bleu); color: var(--blanc); padding: 10px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; }
+    .produit a:hover { background: #1557d6; }
+    .note-boutique { text-align: center; color: var(--gris); margin-top: 35px; }
+
+    /* Mission */
+    .fond-clair { background: var(--blanc); max-width: 100%; }
+    .fond-clair .contenu { max-width: 1100px; margin: auto; padding: 80px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .fond-clair h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 18px; }
+    .fond-clair h2 span { color: var(--bleu); }
+    .fond-clair p { margin-bottom: 15px; color: var(--texte); }
+    .fond-clair img { border-radius: 12px; height: 400px; width: 100%; object-fit: cover; }
+    .valeurs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+    .valeurs div { background: var(--gris-fond); border-left: 4px solid var(--bleu); padding: 14px 16px; border-radius: 6px; }
+    .valeurs strong { color: var(--bleu-nuit); display: block; margin-bottom: 4px; }
+
+    /* Bandeau bleu */
+    .bandeau { background: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 60px 20px; }
+    .bandeau h2 { font-size: 32px; margin-bottom: 14px; }
+    .bandeau p { max-width: 700px; margin: 0 auto 26px; color: #d6e4ff; }
+
+    /* Galerie */
+    .galerie { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+    .galerie img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; background: var(--bleu-clair); cursor: zoom-in; }
+
+    /* Contact */
+    .contact-grille { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+    .infos { background: var(--bleu-clair); padding: 30px; border-radius: 10px; }
+    .infos h3 { color: var(--bleu-nuit); margin-bottom: 12px; }
+    .infos p { margin-bottom: 10px; color: var(--texte); }
+    form { display: grid; gap: 15px; }
+    input, textarea { padding: 14px; border: 1px solid #c9d7f2; border-radius: 6px; font-size: 15px; font-family: inherit; }
+    textarea { min-height: 130px; }
+    button { background: var(--bleu); color: var(--blanc); border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #1557d6; }
+
+    /* Pied de page */
+    footer { background: var(--bleu-nuit); color: #d6e4ff; padding: 50px 20px 25px; }
+    .pied { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+    .pied h4 { color: var(--blanc); margin-bottom: 12px; }
+    .pied a { display: block; color: #d6e4ff; text-decoration: none; margin-bottom: 8px; }
+    .pied a:hover { color: var(--blanc); }
+    .pied .logo-box { display: inline-block; background: var(--blanc); border-radius: 8px; padding: 6px 12px; margin-bottom: 14px; }
+    .pied .logo-box img { height: 80px; width: auto; }
+    .copyright { text-align: center; margin-top: 35px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .fond-clair .contenu, .contact-grille, .pied { grid-template-columns: 1fr; }
+      .fond-clair img { height: 300px; }
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      header img { height: 65px; }
+      .btn-haut { align-self: stretch; text-align: center; }
+      .hero { padding: 80px 20px; }
+      .hero h1 { font-size: 34px; }
+      .titre { font-size: 30px; }
+      .fond-clair h2, .bandeau h2 { font-size: 28px; }
+      .valeurs { grid-template-columns: 1fr; }
+      .topbar { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="intro">
+    <img src="logo-forum.png" alt="Logo Forum des Décideurs">
+  </div>
+
+  <div id="visionneuse" onclick="fermer()">
+    <button id="fermer" aria-label="Fermer">&times;</button>
+    <img id="image-grand" src="" alt="">
+  </div>
+
+  <div class="topbar">
+    <span>Forum des Décideurs</span>
+    <span>Organisation sociale, humanitaire, éducative et chrétienne</span>
+  </div>
+
+  <header>
+    <img src="logo-forum.png" alt="Logo Forum des Décideurs">
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#actions">Nos actions</a>
+      <a href="#boutique">Nos articles</a>
+      <a href="#mission">À propos</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn-haut" href="#contact">Nous rejoindre</a>
+  </header>
+
+  <div class="hero" id="accueil">
+    <div class="hero-contenu">
+      <span class="tag">Fondé sur le Christ</span>
+      <h1>Ensemble, <span>bâtissons</span> un avenir plus solidaire</h1>
+      <p>Une organisation sociale, humanitaire, éducative et chrétienne, au service des personnes et de la communauté.</p>
+      <div class="boutons">
+        <a class="bouton bouton-plein" href="#actions">Découvrir nos actions</a>
+        <a class="bouton bouton-clair" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="actions">
+    <h2 class="titre">Nos actions</h2>
+    <p class="sous-titre">Au service des plus fragiles et de la jeunesse, dans un esprit de solidarité et d'entraide.</p>
+    <div class="grille">
+      <div class="carte"><span class="num">1</span><h3>Aide aux sans-abri</h3><p>Apporter un soutien concret aux personnes qui vivent dans la rue.</p></div>
+      <div class="carte"><span class="num">2</span><h3>Assistance aux personnes âgées</h3><p>Accompagner et soutenir les personnes âgées dans leur quotidien.</p></div>
+      <div class="carte"><span class="num">3</span><h3>Soutien aux veufs et aux veuves</h3><p>Être présent auprès de ceux qui traversent le deuil et la solitude.</p></div>
+      <div class="carte"><span class="num">4</span><h3>Accompagnement des étudiants</h3><p>Encourager les étudiants et les élèves dans leur parcours scolaire et personnel.</p></div>
+      <div class="carte"><span class="num">5</span><h3>Éducation et leadership</h3><p>Promouvoir l'éducation et former des leaders responsables.</p></div>
+      <div class="carte"><span class="num">6</span><h3>Solidarité et entraide</h3><p>Développer le partage et l'entraide au sein de la communauté.</p></div>
+      <div class="carte"><span class="num">7</span><h3>Valeurs chrétiennes</h3><p>Promouvoir les valeurs chrétiennes comme fondement de nos engagements.</p></div>
+    </div>
+  </section>
+
+  <div class="fond-gris" id="boutique">
+    <div class="contenu">
+      <h2 class="titre">Nos articles</h2>
+      <p class="sous-titre">Les articles du forum sont remis à ceux qui rejoignent notre communauté.</p>
+      <div class="produits">
+        <div class="produit">
+          <img src="polo.jpg" alt="Polo du Forum des Décideurs" onclick="ouvrir(this)">
+          <div>
+            <h3>Polo</h3>
+            <p>Polo aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="pull.jpg" alt="Pull du Forum des Décideurs" onclick="ouvrir(this)">
+          <div>
+            <h3>Pull</h3>
+            <p>Pull aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="sac.jpg" alt="Sac du Forum des Décideurs" onclick="ouvrir(this)">
+          <div>
+            <h3>Sac</h3>
+            <p>Sac aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="stylo.jpg" alt="Stylo du Forum des Décideurs" onclick="ouvrir(this)">
+          <div>
+            <h3>Stylo</h3>
+            <p>Stylo aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+        <div class="produit">
+          <img src="chemise.jpg" alt="Chemise du Forum des Décideurs" onclick="ouvrir(this)">
+          <div>
+            <h3>Chemise</h3>
+            <p>Chemise aux couleurs du forum.</p>
+            <a href="#contact">Rejoindre le forum</a>
+          </div>
+        </div>
+      </div>
+      <p class="note-boutique">Pour recevoir un article, contactez-nous ou rejoignez le forum.</p>
+    </div>
+  </div>
+
+  <div class="fond-clair" id="mission">
+    <div class="contenu">
+      <div>
+        <h2>À propos <span>du Forum</span></h2>
+        <p>Le Forum des Décideurs est une organisation sociale, humanitaire, éducative et chrétienne. Son fondement spirituel et moral est le Christ.</p>
+        <p>Nous agissons pour aider les personnes sans-abri, assister les personnes âgées, soutenir les veufs et les veuves, accompagner les étudiants et promouvoir l'éducation et le leadership.</p>
+        <div class="valeurs">
+          <div><strong>Foi</strong>Un fondement spirituel et moral en Christ.</div>
+          <div><strong>Solidarité</strong>Le partage et l'entraide au cœur de nos actions.</div>
+          <div><strong>Éducation</strong>Former et accompagner la jeunesse.</div>
+          <div><strong>Service</strong>Être présent auprès des plus fragiles.</div>
+        </div>
+      </div>
+      <img src="photo-8.jpg" alt="Le Forum des Décideurs en action">
+    </div>
+  </div>
+
+  <div class="bandeau">
+    <h2>Rejoignez le mouvement</h2>
+    <p>Que vous souhaitiez donner de votre temps, soutenir une action ou simplement en savoir plus, nous serons heureux d'échanger avec vous.</p>
+    <a class="bouton bouton-clair" href="#contact">Nous écrire</a>
+  </div>
+
+  <section id="galerie">
+    <h2 class="titre">Nos moments forts</h2>
+    <p class="sous-titre">Quelques instants partagés avec les enfants et les équipes.</p>
+    <div class="galerie">
+      <img src="photo-6.jpg" alt="Groupe lors d'une rencontre" onclick="ouvrir(this)">
+      <img src="photo-7.jpg" alt="Enfants souriants" onclick="ouvrir(this)">
+      <img src="photo-8.jpg" alt="Moment de visite" onclick="ouvrir(this)">
+      <img src="photo-9.jpg" alt="Cuisine solidaire" onclick="ouvrir(this)">
+      <img src="photo-10.jpg" alt="Préparation des repas" onclick="ouvrir(this)">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="titre">Contact</h2>
+    <p class="sous-titre">Une question ? Écrivez-nous.</p>
+    <div class="contact-grille">
+      <div class="infos">
+        <h3>Nous trouver</h3>
+        <p>Téléphone : à compléter</p>
+        <p>E-mail : à compléter</p>
+      </div>
+      <form>
+        <input type="text" placeholder="Nom" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Sujet">
+        <textarea placeholder="Votre message"></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="pied">
+      <div>
+        <div class="logo-box"><img src="logo-forum.png" alt="Logo Forum des Décideurs"></div>
+        <p>Organisation sociale, humanitaire, éducative et chrétienne, fondée sur le Christ.</p>
+      </div>
+      <div>
+        <h4>Liens utiles</h4>
+        <a href="#accueil">Accueil</a>
+        <a href="#actions">Nos actions</a>
+        <a href="#boutique">Nos articles</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Nos domaines</h4>
+        <a href="#actions">Aide aux sans-abri</a>
+        <a href="#actions">Personnes âgées</a>
+        <a href="#actions">Veufs et veuves</a>
+        <a href="#actions">Étudiants</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Forum des Décideurs. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    function ouvrir(image) {
+      var grand = document.getElementById('image-grand');
+      grand.src = image.src;
+      grand.alt = image.alt;
+      document.getElementById('visionneuse').classList.add('ouverte');
+    }
+    function fermer() {
+      document.getElementById('visionneuse').classList.remove('ouverte');
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') fermer();
+    });
+  </script>
+
+</body>
+</html>
