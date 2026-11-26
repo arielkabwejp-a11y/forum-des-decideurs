@@ -301,17 +301,18 @@
         <p>Téléphone : <a href="tel:+243903424278">+243 903 424 278</a></p>
         <p>E-mail : <a href="mailto:forumdesdecideurs01@gmail.com">forumdesdecideurs01@gmail.com</a></p>
       </div>
-      <form>
-        <select required>
+      <form action="https://formspree.io/f/mnpdroyb" method="POST">
+        <select name="objet" required>
           <option value="">Objet de votre message</option>
           <option>Rejoindre le forum</option>
           <option>Recevoir un article</option>
           <option>Autre question</option>
         </select>
-        <input type="text" placeholder="Nom" required>
-        <input type="email" placeholder="Email" required>
-        <input type="text" placeholder="Sujet">
-        <textarea placeholder="Votre message"></textarea>
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="sujet" placeholder="Sujet">
+        <textarea name="message" placeholder="Votre message"></textarea>
+        <input type="hidden" name="_subject" value="Nouveau message depuis le site du Forum des Décideurs">
         <button type="submit">Envoyer</button>
       </form>
     </div>
