@@ -117,8 +117,10 @@
     .infos { background: var(--bleu-clair); padding: 30px; border-radius: 10px; }
     .infos h3 { color: var(--bleu-nuit); margin-bottom: 12px; }
     .infos p { margin-bottom: 10px; color: var(--texte); }
+    .infos a { color: var(--bleu); font-weight: bold; text-decoration: none; word-break: break-all; }
+    .infos a:hover { text-decoration: underline; }
     form { display: grid; gap: 15px; }
-    input, textarea { padding: 14px; border: 1px solid #c9d7f2; border-radius: 6px; font-size: 15px; font-family: inherit; }
+    input, textarea, select { padding: 14px; border: 1px solid #c9d7f2; border-radius: 6px; font-size: 15px; font-family: inherit; }
     textarea { min-height: 130px; }
     button { background: var(--bleu); color: var(--blanc); border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
     button:hover { background: #1557d6; }
@@ -296,10 +298,16 @@
     <div class="contact-grille">
       <div class="infos">
         <h3>Nous trouver</h3>
-        <p>Téléphone : à compléter</p>
-        <p>E-mail : à compléter</p>
+        <p>Téléphone : <a href="tel:+243903424278">+243 903 424 278</a></p>
+        <p>E-mail : <a href="mailto:forumdesdecideurs01@gmail.com">forumdesdecideurs01@gmail.com</a></p>
       </div>
       <form>
+        <select required>
+          <option value="">Objet de votre message</option>
+          <option>Rejoindre le forum</option>
+          <option>Recevoir un article</option>
+          <option>Autre question</option>
+        </select>
         <input type="text" placeholder="Nom" required>
         <input type="email" placeholder="Email" required>
         <input type="text" placeholder="Sujet">
@@ -324,11 +332,9 @@
         <a href="#contact">Contact</a>
       </div>
       <div>
-        <h4>Nos domaines</h4>
-        <a href="#actions">Aide aux sans-abri</a>
-        <a href="#actions">Personnes âgées</a>
-        <a href="#actions">Veufs et veuves</a>
-        <a href="#actions">Étudiants</a>
+        <h4>Contact</h4>
+        <a href="tel:+243903424278">+243 903 424 278</a>
+        <a href="mailto:forumdesdecideurs01@gmail.com">forumdesdecideurs01@gmail.com</a>
       </div>
     </div>
     <p class="copyright">© 2026 Forum des Décideurs. Tous droits réservés.</p>
@@ -350,4 +356,4 @@
   </script>
 
 </body>
-</html>
+  </html>
